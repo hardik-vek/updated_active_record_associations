@@ -1,0 +1,46 @@
+<center>
+<h1> My Profile </h1>
+
+<p>Username: <%= current_user.username %></p>
+<p>Email: <%= current_user.email %></p>
+
+  <h2 class="center">Event Created by me</h2>
+  <div>
+      <table> 
+          <th>Event Name</th>
+          <th colspan=3>Actions</th>
+          <% @events.each do |event| %>
+          <% if event.user_id == session[:user_id] %>
+          <tr>
+              <td><%= event.name %></td>
+              <td><%= button_to "Show", event_path(event), method: :get %></td>
+              <td><%= button_to "Edit", edit_event_path(event), method: :get %></td>                <td><%= button_to "Delete", event_path(event), method: :delete %></td>
+          </tr>
+          <% end %>
+          <% end %>
+      </table>
+  </div>
+
+  <h2>Event Enrolled by me</h2>
+  <table cellpadding="15px" border="1px">
+      <tr>
+        <td><b>Event Name</b></td>
+        <td><b>Description</b></td>
+        <td><b>Event Date</b></td>
+        <td><b>Category</b></td>
+        <td><b>Organizer</b></td>
+      </tr>
+      <% @enroll_events.each do |enroll| %>
+      <tr>
+        <td><%= enroll.event.name %></td>
+        <td><%= enroll.event.description %></td>
+        <td><%= enroll.event.event_date %></td>
+        <td><%#= enroll.event.category.category_name %></td>
+        <td><%= enroll.event.user.username %></td>
+      </tr>
+        <% end %>
+    </table><br><br>
+</center>
+<center>
+<%= link_to "Back",events_path,method: :get %>
+</center>

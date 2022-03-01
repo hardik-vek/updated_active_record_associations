@@ -1,0 +1,38 @@
+<%= form_with model: @event do |form| %>
+<div>
+  <%= form.label :Name %></br>
+  <%= form.text_field :name %>
+  <% @event.errors.full_messages_for(:name).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div>
+  <%= form.label :Description %></br>
+  <%= form.text_field :description %>
+  <% @event.errors.full_messages_for(:description).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div>
+  <%= form.label :Event_date %></br>
+  <%= form.date_field :event_date %>
+  <% @event.errors.full_messages_for(:event_date).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+
+<div>
+  <%= form.number_field :user_id, value: current_user.id, type: :hidden %>
+</div>
+
+<div>
+  <%#= form.label :Category %></br>
+  <%#= form.select :category_id, Category.all.map { |t| [t.category_name, t.id] } %>
+</div>
+
+<div>
+  <%= form.submit %>
+</div>
+<% end %>
