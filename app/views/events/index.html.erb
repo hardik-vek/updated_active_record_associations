@@ -10,18 +10,14 @@
       <th>Name</th>
       <th>Description</th>
       <th>Event_date</th>
-      <th>Category</th>
       <th>Username</th>
-      <th>Show</th>
 
       <% @events.each do |event| %>
       <tr>
         <td><%= event.name %></td>
         <td><%= event.description %></td>
         <td><%= event.event_date %></td>
-        <td><%#= event.category.category_name %></td>
         <td><%= event.user.username %></td>
-        <td><%= button_to "Show", event_path(event), method: :get %></td>
       </tr>
     <% end %>
     </table>

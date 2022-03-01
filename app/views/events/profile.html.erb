@@ -27,7 +27,6 @@
         <td><b>Event Name</b></td>
         <td><b>Description</b></td>
         <td><b>Event Date</b></td>
-        <td><b>Category</b></td>
         <td><b>Organizer</b></td>
       </tr>
       <% @enroll_events.each do |enroll| %>
@@ -35,7 +34,6 @@
         <td><%= enroll.event.name %></td>
         <td><%= enroll.event.description %></td>
         <td><%= enroll.event.event_date %></td>
-        <td><%#= enroll.event.category.category_name %></td>
         <td><%= enroll.event.user.username %></td>
       </tr>
         <% end %>
